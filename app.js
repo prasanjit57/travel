@@ -100,10 +100,10 @@ const validateListing = (req,res,next) => {
     }
 }
 
-// //new route
-// app.get("/listings/new",wrapAsync(async(req,res) => {
-//     res.render("listings/new.ejs");
-// }));
+//new route
+app.get("/listings/new",wrapAsync(async(req,res) => {
+    res.render("listings/new.ejs");
+}));
 
 // show route
 app.get("/listings/:id",wrapAsync(async(req,res) => {
