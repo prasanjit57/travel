@@ -65,9 +65,10 @@ body{
 }
 
 .card-img-top {
-   border-radius: 1rem !important;
-   width: 100% !important;
-   object-fit: cover !important;
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important; /* Add this line */
+    height: 150px; /* Set a fixed height for the image */
 }
 
 .card-body {
@@ -112,3 +113,4 @@ body{
 .btns {
     display: flex;
 }
+

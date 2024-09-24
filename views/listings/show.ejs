@@ -1,60 +1,58 @@
 <% layout("/layouts/boilerplate") %>
+
 <div class="row mt-3">
     <div class="col-8 offset-2">
     </div>
-    <h3><%= listing.title %> </h3>
+    <h3 style="font-weight: bold; color: #333;"><%= listing.title %> </h3>
 
-    <div class="card col-6 offset-2 show-card listing-card">
-        <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing_image">
+    <div class="card col-6 offset-2 show-card listing-card" style="background-color: #f7f7f7; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing_image" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px 10px 0 0;">
         <div class="card-body">
-        <p class="card-text">
-            <%= listing.description %> <br>
-            &#8377 <%= listing.price.toLocaleString("en-IN") %> <br>
-            <%= listing.location %> <br>
-            <%= listing.country %>
+            <p class="card-text" style="font-size: 18px; color: #666;">
+                <%= listing.description %> <br>
+                &#8377 <%= listing.price.toLocaleString("en-IN") %> <br>
+                <%= listing.location %> <br>
+                <%= listing.country %>
+            </p>
+        </div>
+    </div>
 
-            
-    </div>
-    </div>
-    
     <br>
     <div class="btns">
-    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-2 edit-btn">Edit</a>
-    <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-        <button class="btn btn-dark offset-4">Delete</button>
-    </form>
+        <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-2 edit-btn" style="background-color: #333; color: #fff; border: none; border-radius: 5px; padding: 10px 20px;">Edit</a>
+        <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+            <button class="btn btn-dark offset-4" style="background-color: #333; color: #fff; border: none; border-radius: 5px; padding: 10px 20px;">Delete</button>
+        </form>
     </div>
+
     <div class="col-8 offset-3 mb-3">
-        <hr>
-        <h4>Leave a Review</h4>
+        <hr style="border: 1px solid #ccc;">
+        <h4 style="font-weight: bold; color: #333;">Leave a Review</h4>
         <form action="/listings/<%= listing.id %>/reviews" method="POST">
             <div class="mb-3 mt-3">
-                <label for="rating" class="form-label">Rating</label>
-                <input type="range" min="1" max="5" id="rating" name="review[rating]">
+                <label for="rating" class="form-label" style="font-size: 18px; color: #666;">Rating</label>
+                <input type="range" min="1" max="5" id="rating" name="review[rating]" style="width: 100%; height: 20px; border-radius: 5px;">
             </div>
             <div class="mb-3 mt-3">
-                <label for="comment" class="form-label">Comments</label>
-                <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+                <label for="comment" class="form-label" style="font-size: 18px; color: #666;">Comments</label>
+                <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required style="width: 100%; height: 100px; border-radius: 5px; padding: 10px;"></textarea>
             </div>
-            <button class="btn btn-outline-dark">Submit</button>
+            <button class="btn btn-outline-dark" style="background-color: #333; color: #fff; border: none; border-radius: 5px; padding: 10px 20px;">Submit</button>
         </form>
 
-        <hr>
+        <hr style="border: 1px solid #ccc;">
 
-        <h4>ALL reviews</h4>
+        <h4 style="font-weight: bold; color: #333;">ALL reviews</h4>
         <div class="row">
-        <% for(review of listing.reviews) { %>
-         <div class="card col-5 ms-3 mb-3">
-            <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"><%= review.comment %></p>
-                <p class="card-text"><%= review.rating %></p>
-            </div>
-
-         </div>   
-        <% } %>
+            <% for(review of listing.reviews) { %>
+                <div class="card col-5 ms-3 mb-3" style="background-color: #f7f7f7; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold; color: #333;"></h5>
+                        <p class="card-text" style="font-size: 18px; color: #666;"><%= review.comment %></p>
+                        <p class="card-text" style="font-size: 18px; color: #666;">Review:<%= review.rating %>/5</p>
+                    </div>
+                </div>
+            <% } %>
         </div>
-        
     </div>
 </div>
-
